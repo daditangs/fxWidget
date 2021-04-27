@@ -1,0 +1,27 @@
+.card {
+  max-width: 400px;
+}
+
+.header-image {
+  background-image: url('https://is4-ssl.mzstatic.com/image/thumb/Purple124/v4/03/72/75/03727557-436c-657d-d979-7ad758ab4d9b/source/512x512bb.jpg');
+  background-size: cover;
+}
+
+form {
+  padding: 24px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+p {
+  color: lightgray;
+}
+
+
+.mat-card-content {
+  padding-top: 10px;
+}
