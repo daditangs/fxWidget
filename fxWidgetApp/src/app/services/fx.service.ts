@@ -21,7 +21,9 @@ export class FxService {
   // TODO: api keys should be secured and can be placed in our env variables
   getRates() {
     // free api limits to 250 requests per day
-    this.httpClient.get<any>('http://api.exchangeratesapi.io/v1/latest?access_key=ad129c77b950688a5fbd2db292c03d26').pipe().subscribe(data => this.rates.next(data));
+    this.httpClient.get<any>('http://api.exchangeratesapi.io/v1/latest?access_key=ad129c77b950688a5fbd2db292c03d26').
+      pipe().subscribe(data => 
+        data && data?.success ? this.rates.next(data): this.rates.next([]));
   }
 
   getBuyRate(buySellCurr: string, amt: number, homeCurr: string): number {
@@ -34,15 +36,15 @@ export class FxService {
   }
 
   private convert(buySellCur: string, amt: number, homeCurr: string): number {
-    return Number(((1 / this.rates.value?.rates[buySellCur]) * amt * this.rates.value?.rates[homeCurr]).toFixed(2));
+    return Number(((1 / this.rates.value?.rates[buySellCur]) * amt * this.rates.value?.rates[homeCurr]).toFixed(2)) || 0.0;
   }
 
   getRate(buySellCur: string, homeCurr: string): number {
-    return Number(((1 / this.rates.value?.rates[buySellCur]) * this.rates.value?.rates[homeCurr]).toFixed(2));
+    return Number(((1 / this.rates.value?.rates[buySellCur]) * this.rates.value?.rates[homeCurr]).toFixed(2)) || 0.0;
   }
 
   // map the different currencies to be used as select options in the app
   getCurrs(): any[] {
-    return Object.keys(this.rates.value?.rates).map(_k => ({value: _k, name: _k}));
+    return Object.keys(this.rates.value?.rates).map(_k => ({value: _k, name: _k})) || [];
   }
 }
