@@ -1,0 +1,2 @@
+# fxWidget
+FX Calculator Widget
