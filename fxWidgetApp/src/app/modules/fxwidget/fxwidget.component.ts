@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { FxService } from 'src/app/services/fx.service';
 
@@ -46,15 +46,15 @@ export class FxwidgetComponent implements OnInit {
     );
   }
 
-  get buySellCurr() {
+  get buySellCurr(): AbstractControl {
     return this.rateForm.controls.buySellCurr;
   }
 
-  get offerCurrency() {
+  get offerCurrency(): AbstractControl {
     return this.rateForm.controls.offerCurrency;
   }
 
-  get buySellAmount() {
+  get buySellAmount(): AbstractControl {
     return this.rateForm.controls.buySellAmount;
   }
 

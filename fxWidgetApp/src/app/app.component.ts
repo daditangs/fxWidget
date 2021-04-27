@@ -7,8 +7,6 @@ import { FxService } from './services/fx.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'fxwidget';
-
   isLoaded$ = this.fxService.isLoaded();
 
   constructor(private fxService: FxService) {}
